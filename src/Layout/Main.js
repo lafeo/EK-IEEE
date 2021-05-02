@@ -1,5 +1,6 @@
 import React from "react";
 import "./style.css";
+import { Link } from "react-router-dom";
 
 const Main = () => {
   return (
@@ -59,7 +60,6 @@ const Main = () => {
             <ul class="nav nav-tabs row d-flex">
               <li class="nav-item col-3" data-aos="zoom-in">
                 <a class="nav-link show" data-bs-toggle="tab" href="#tab-1">
-                  {/* <i class="ri-gps-line"></i> */}
                   <h4 class="d-none d-lg-block">How the program works?</h4>
                 </a>
               </li>
@@ -68,9 +68,20 @@ const Main = () => {
                 data-aos="zoom-in"
                 data-aos-delay="100"
               >
-                <a class="nav-link show" data-bs-toggle="tab" href="#tab-2">
-                  <h4 class="d-none d-lg-block">Volunteer Roles</h4>
-                </a>
+                <Link to="/volunteer-info/1" style={{ textDecoration: "none" }}>
+                  <a
+                    class="nav-link show"
+                    data-bs-toggle="tab"
+                    href="#tab-2"
+                    style={{
+                      background: "#0072CE ",
+                      color: "white ",
+                      textDecoration: "none",
+                    }}
+                  >
+                    <h4 class="d-none d-lg-block">Volunteer Roles</h4>
+                  </a>
+                </Link>
               </li>
               <li
                 class="nav-item col-3"
