@@ -1,57 +1,75 @@
-import React, {useState} from 'react'
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect
+  Redirect,
 } from "react-router-dom";
-import Home from 'pages/home/home';
+import Home from "pages/home/home";
 // import {Row,Container,Col,Button} from 'react-bootstrap';
-import Navigation from 'components/Navigation/navigation';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'misc/_common.scss';
+import Navigation from "components/Navigation/navigation";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "misc/_common.scss";
 // import Shop from 'pages/shop/shop';
 // import Signup from 'pages/signup/signup';
 // import Signin from 'pages/signin/signin';
-import Auth from 'pages/auth/auth';
-import Dashboard from 'pages/dashboard/dashboard';
-import Room from 'pages/room/room';
+import Auth from "pages/auth/auth";
+import Dashboard from "pages/dashboard/dashboard";
+import Room from "pages/room/room";
 // import Signin from 'pages/signin/signin';
 // import Signup from 'pages/signup/signup';
-import { createBrowserHistory } from 'history';
+import { createBrowserHistory } from "history";
+import Layout from "./pages/Layout/Layout";
 
 function App() {
-  const [logged,setLogged] = useState(0);
+  const [logged, setLogged] = useState(0);
   // const [auth,setAuth] = useState(0);
-  const history = createBrowserHistory()
-    
-  return (
-    
-    <Router history= {history}>
-      <Navigation logged={logged} setLogged={setLogged}/>
-      
-      {!logged?
-      <Switch>
-       <Route exact path='/room/:id' render={(props) => {return ( <Room {...props} /> )}} />
-        
-        <Route exact path="/volunteer">
-          <Auth logged={logged} setLogged={setLogged}/>
-        </Route> 
+  const history = createBrowserHistory();
 
-        <Route path="/">
-          <Home/>
-        </Route>
-      </Switch>
-  :
-      <Switch>
-       <Route exact path='/room/:id' render={(props) => {return ( <Room {...props} /> )}} />
-        
-        <Route path='/dashboard' exact component={() => <Dashboard setLogged={setLogged }/>}/>
-        <Route path='/' render={() => <Redirect to="/dashboard"/>}/>
-      </Switch>
-}
-</Router>
+  return (
+    <Router history={history}>
+      <Navigation logged={logged} setLogged={setLogged} />
+
+      {!logged ? (
+        <Switch>
+          <Route
+            exact
+            path="/room/:id"
+            render={(props) => {
+              return <Room {...props} />;
+            }}
+          />
+          <Route exact path="/certification" component={Layout} />
+
+          <Route exact path="/volunteer">
+            <Auth logged={logged} setLogged={setLogged} />
+          </Route>
+
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      ) : (
+        <Switch>
+          <Route
+            exact
+            path="/room/:id"
+            render={(props) => {
+              return <Room {...props} />;
+            }}
+          />
+
+          <Route
+            path="/dashboard"
+            exact
+            component={() => <Dashboard setLogged={setLogged} />}
+          />
+          <Route exact path="/certification" component={Layout} />
+          <Route path="/" render={() => <Redirect to="/dashboard" />} />
+        </Switch>
+      )}
+    </Router>
   );
 }
 
