@@ -1,5 +1,6 @@
 import React from "react";
 import "./style.css";
+import { Link } from "react-router-dom";
 
 const Main = () => {
   return (
@@ -46,7 +47,7 @@ const Main = () => {
                     go on duty as much as you possibly can.
                   </li>
                 </ul>
-                <a href="/" class="btn-learn-more">
+                <a href="/volunteer-info" class="btn-learn-more">
                   Learn More
                 </a>
               </div>
@@ -58,9 +59,8 @@ const Main = () => {
           <div class="container">
             <ul class="nav nav-tabs row d-flex">
               <li class="nav-item col-3" data-aos="zoom-in">
-                <a class="nav-link show" data-bs-toggle="tab" href="#tab-1">
-                  {/* <i class="ri-gps-line"></i> */}
-                  <h4 class="d-none d-lg-block">How the program works?</h4>
+                <a class="nav-link show" data-bs-toggle="tab" href="/volunteer-info/1">
+                  <h4 class="d-lg-block" >How the program works?</h4>
                 </a>
               </li>
               <li
@@ -68,17 +68,26 @@ const Main = () => {
                 data-aos="zoom-in"
                 data-aos-delay="100"
               >
-                <a class="nav-link show" data-bs-toggle="tab" href="#tab-2">
-                  <h4 class="d-none d-lg-block">Volunteer Roles</h4>
-                </a>
+                <Link to="/volunteer-info/1" style={{ textDecoration: "none" }}>
+                  <a
+                    class="nav-link show"
+                    data-bs-toggle="tab"
+                    href="/volunteer-info/2"
+                    style={{
+                      textDecoration: "none",
+                    }}
+                  >
+                    <h4 class=" d-lg-block">Volunteer Roles</h4>
+                  </a>
+                </Link>
               </li>
               <li
                 class="nav-item col-3"
                 data-aos="zoom-in"
                 data-aos-delay="200"
               >
-                <a class="nav-link" data-bs-toggle="tab" href="#tab-3">
-                  <h4 class="d-none d-lg-block">
+                <a class="nav-link" data-bs-toggle="tab" href="/volunteer-info/3">
+                  <h4 class=" d-lg-block">
                     Who's life you will be brightening
                   </h4>
                 </a>
@@ -88,8 +97,8 @@ const Main = () => {
                 data-aos="zoom-in"
                 data-aos-delay="300"
               >
-                <a class="nav-link" data-bs-toggle="tab" href="#tab-4">
-                  <h4 class="d-none d-lg-block">Offline Options</h4>
+                <a class="nav-link" data-bs-toggle="tab" href="/volunteer-info/4">
+                  <h4 class=" d-lg-block">Offline Options</h4>
                 </a>
               </li>
             </ul>

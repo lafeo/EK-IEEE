@@ -6,25 +6,25 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import Suicide from 'pages/components/Suicide';
+import Dementia from 'pages/components/Dementia';
+import PsyFirstAid from 'pages/components/PsyFirstAid';
+import Winter from 'pages/components/Winter';
+import Communication from 'pages/components/Communication';
+
+
 import Home from "pages/home/home";
-// import {Row,Container,Col,Button} from 'react-bootstrap';
 import Navigation from "components/Navigation/navigation";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "misc/_common.scss";
-// import Shop from 'pages/shop/shop';
-// import Signup from 'pages/signup/signup';
-// import Signin from 'pages/signin/signin';
 import Auth from "pages/auth/auth";
 import Dashboard from "pages/dashboard/dashboard";
 import Room from "pages/room/room";
-// import Signin from 'pages/signin/signin';
-// import Signup from 'pages/signup/signup';
 import { createBrowserHistory } from "history";
 import Layout from "./pages/Layout/Layout";
 
 function App() {
   const [logged, setLogged] = useState(0);
-  // const [auth,setAuth] = useState(0);
   const history = createBrowserHistory();
 
   return (
@@ -33,6 +33,25 @@ function App() {
 
       {!logged ? (
         <Switch>
+          <Route exact path="/volunteer-info">
+            <Layout />
+          </Route>
+          <Route exact path="/volunteer-info/1">
+            <Dementia />
+          </Route>
+          <Route exact path="/volunteer-info/2">
+            <Suicide />
+          </Route>
+          <Route exact path="/volunteer-info/3">
+            <PsyFirstAid />
+          </Route>
+          <Route exact path="/volunteer-info/4">
+            <Communication />
+          </Route>
+          <Route exact path="/volunteer-info/5">
+            <Winter />
+          </Route>
+
           <Route
             exact
             path="/room/:id"
@@ -40,7 +59,6 @@ function App() {
               return <Room {...props} />;
             }}
           />
-          <Route exact path="/certification" component={Layout} />
 
           <Route exact path="/volunteer">
             <Auth logged={logged} setLogged={setLogged} />
@@ -52,6 +70,25 @@ function App() {
         </Switch>
       ) : (
         <Switch>
+          <Route exact path="/volunteer-info">
+            <Layout />
+          </Route>
+          <Route exact path="/volunteer-info/1">
+            <Dementia />
+          </Route>
+          <Route exact path="/volunteer-info/2">
+            <Suicide />
+          </Route>
+          <Route exact path="/volunteer-info/3">
+            <PsyFirstAid />
+          </Route>
+          <Route exact path="/volunteer-info/4">
+            <Communication />
+          </Route>
+          <Route exact path="/volunteer-info/5">
+            <Winter />
+          </Route>
+
           <Route
             exact
             path="/room/:id"
@@ -65,7 +102,7 @@ function App() {
             exact
             component={() => <Dashboard setLogged={setLogged} />}
           />
-          <Route exact path="/certification" component={Layout} />
+          <Route exact path="/volunteer-info" component={Layout} />
           <Route path="/" render={() => <Redirect to="/dashboard" />} />
         </Switch>
       )}
